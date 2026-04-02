@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop — Terra Botanics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Terra Botanics</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon" id="cart-link">
+                    🛒 <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Our Products</h1>
+        <p>Pure, natural skincare for every routine</p>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-bar">
+                <button class="filter-btn active" data-category="all" id="filter-all">All</button>
+                <button class="filter-btn" data-category="serums" id="filter-serums">Serums</button>
+                <button class="filter-btn" data-category="creams" id="filter-creams">Creams</button>
+                <button class="filter-btn" data-category="cleansers" id="filter-cleansers">Cleansers</button>
+                <button class="filter-btn" data-category="mists" id="filter-mists">Mists & Toners</button>
+            </div>
+            <div class="sort-bar">
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select">
+                    <option value="popular">Most Popular</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="newest">Newest</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-page">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-card" data-category="serums" data-product-id="1" data-price="34.99">
+                    <div class="product-image" style="background-color: #e8d5c4;">
+                        <span class="product-badge">Bestseller</span>
+                        <div class="product-emoji">🌹</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rosehip Glow Serum</h3>
+                        <p class="product-desc">Vitamin C & rosehip oil for radiant skin</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€34.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('1', 'Rosehip Glow Serum', 34.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="creams" data-product-id="2" data-price="29.99">
+                    <div class="product-image" style="background-color: #d5cfe8;">
+                        <span class="product-badge">New</span>
+                        <div class="product-emoji">💜</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Lavender Night Cream</h3>
+                        <p class="product-desc">Deep repair while you sleep</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€29.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('2', 'Lavender Night Cream', 29.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cleansers" data-product-id="3" data-price="24.99">
+                    <div class="product-image" style="background-color: #e8e4c4;">
+                        <div class="product-emoji">🌼</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Chamomile Cleanser</h3>
+                        <p class="product-desc">Gentle daily cleansing for all skin types</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€24.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('3', 'Chamomile Cleanser', 24.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mists" data-product-id="4" data-price="19.99">
+                    <div class="product-image" style="background-color: #c4e8d5;">
+                        <div class="product-emoji">🌿</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Aloe Hydra Mist</h3>
+                        <p class="product-desc">Instant hydration on the go</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€19.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('4', 'Aloe Hydra Mist', 19.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="serums" data-product-id="5" data-price="39.99">
+                    <div class="product-image" style="background-color: #f0dcc8;">
+                        <div class="product-emoji">✨</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Vitamin E Repair Serum</h3>
+                        <p class="product-desc">Anti-aging botanical complex</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€39.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('5', 'Vitamin E Repair Serum', 39.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="creams" data-product-id="6" data-price="27.99">
+                    <div class="product-image" style="background-color: #c8e0e8;">
+                        <div class="product-emoji">💧</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Ocean Mineral Moisturizer</h3>
+                        <p class="product-desc">Deep hydration with sea minerals</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€27.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('6', 'Ocean Mineral Moisturizer', 27.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cleansers" data-product-id="7" data-price="22.99">
+                    <div class="product-image" style="background-color: #e8dcc4;">
+                        <div class="product-emoji">🍯</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Honey Oat Scrub</h3>
+                        <p class="product-desc">Gentle exfoliation for smooth skin</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€22.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('7', 'Honey Oat Scrub', 22.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mists" data-product-id="8" data-price="18.99">
+                    <div class="product-image" style="background-color: #e8c4d5;">
+                        <span class="product-badge">Sale</span>
+                        <div class="product-emoji">🌸</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rose Petal Toner</h3>
+                        <p class="product-desc">Balance and refresh your skin</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€18.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('8', 'Rose Petal Toner', 18.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 Terra Botanics. This is a demo site for analytics practice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">Added to cart!</div>
+    <script src="script.js"></script>
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const category = this.dataset.category;
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

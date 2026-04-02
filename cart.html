@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart — Terra Botanics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Terra Botanics</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon active" id="cart-link">
+                    🛒 <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Your Cart</h1>
+        <p>Review your items before checkout</p>
+    </section>
+
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-layout">
+                <div class="cart-items" id="cart-items">
+                    <div class="cart-empty" id="cart-empty">
+                        <p>Your cart is empty</p>
+                        <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+                    </div>
+                </div>
+                <div class="cart-summary" id="cart-summary" style="display:none;">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">€0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="cart-shipping">Free</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="cart-total">€0.00</span>
+                    </div>
+                    <button class="btn btn-primary btn-full" id="checkout-btn" onclick="beginCheckout()">Proceed to Checkout</button>
+                    <a href="products.html" class="btn btn-secondary btn-full" id="continue-shopping">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>Checkout</h2>
+            <form id="checkout-form" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="checkout-name">Full Name</label>
+                    <input type="text" id="checkout-name" required placeholder="Anna Schmidt">
+                </div>
+                <div class="form-group">
+                    <label for="checkout-email">Email</label>
+                    <input type="email" id="checkout-email" required placeholder="anna@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="checkout-address">Shipping Address</label>
+                    <input type="text" id="checkout-address" required placeholder="Musterstraße 1, Hamburg">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkout-city">City</label>
+                        <input type="text" id="checkout-city" required placeholder="Hamburg">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-zip">Postal Code</label>
+                        <input type="text" id="checkout-zip" required placeholder="20095">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-payment">Payment Method</label>
+                    <select id="checkout-payment">
+                        <option value="credit-card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="klarna">Klarna</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="place-order-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal-overlay" id="confirmation-modal">
+        <div class="modal modal-confirmation">
+            <div class="confirmation-icon">✓</div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you for your purchase. Your order #<span id="order-number"></span> has been placed.</p>
+            <a href="index.html" class="btn btn-primary" id="back-home-btn">Back to Home</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 Terra Botanics. This is a demo site for analytics practice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">Added to cart!</div>
+    <script src="script.js"></script>
+    <script>
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('terra_cart') || '[]');
+            const itemsEl = document.getElementById('cart-items');
+            const emptyEl = document.getElementById('cart-empty');
+            const summaryEl = document.getElementById('cart-summary');
+
+            if (cart.length === 0) {
+                emptyEl.style.display = '';
+                summaryEl.style.display = 'none';
+                return;
+            }
+
+            emptyEl.style.display = 'none';
+            summaryEl.style.display = '';
+
+            let html = '';
+            let subtotal = 0;
+            cart.forEach((item, idx) => {
+                subtotal += item.price * item.qty;
+                html += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p class="cart-item-price">€${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="qty-control">
+                            <button onclick="updateQty(${idx}, -1)">−</button>
+                            <span>${item.qty}</span>
+                            <button onclick="updateQty(${idx}, 1)">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem(${idx})">Remove</button>
+                    </div>
+                </div>`;
+            });
+
+            itemsEl.innerHTML = html + emptyEl.outerHTML;
+            document.getElementById('cart-subtotal').textContent = '€' + subtotal.toFixed(2);
+            document.getElementById('cart-total').textContent = '€' + subtotal.toFixed(2);
+        }
+
+        function updateQty(idx, delta) {
+            const cart = JSON.parse(localStorage.getItem('terra_cart') || '[]');
+            cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+            localStorage.setItem('terra_cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+
+        function removeItem(idx) {
+            const cart = JSON.parse(localStorage.getItem('terra_cart') || '[]');
+            cart.splice(idx, 1);
+            localStorage.setItem('terra_cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+
+        function beginCheckout() {
+            document.getElementById('checkout-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            document.getElementById('checkout-modal').classList.remove('active');
+            const orderNum = 'TB-' + Math.floor(Math.random() * 90000 + 10000);
+            document.getElementById('order-number').textContent = orderNum;
+            document.getElementById('confirmation-modal').classList.add('active');
+            localStorage.removeItem('terra_cart');
+            updateCartCount();
+        }
+
+        renderCart();
+    </script>
+</body>
+</html>

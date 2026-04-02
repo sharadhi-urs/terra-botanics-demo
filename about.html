@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Terra Botanics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Terra Botanics</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon" id="cart-link">
+                    🛒 <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Our Story</h1>
+        <p>From Hamburg, with love</p>
+    </section>
+
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Born from Nature, Backed by Science</h2>
+                    <p>Terra Botanics was founded in 2020 in Hamburg, Germany with a simple mission: create skincare that's genuinely good for your skin and the planet.</p>
+                    <p>Every product is formulated using sustainably sourced botanicals, cold-pressed oils, and plant-based actives. No parabens, no sulfates, no synthetic fragrances. Just pure, effective ingredients.</p>
+                    <p>We work directly with organic farms across Europe to source our raw ingredients, ensuring fair trade practices and minimal environmental impact at every step.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-visual">🌱</div>
+                </div>
+            </div>
+
+            <div class="values-section">
+                <h2 class="section-title">Our Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🌍</div>
+                        <h3>Sustainable</h3>
+                        <p>100% recyclable packaging and carbon-neutral shipping across Europe</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🐰</div>
+                        <h3>Cruelty-Free</h3>
+                        <p>Never tested on animals. Certified by Leaping Bunny</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🧪</div>
+                        <h3>Transparent</h3>
+                        <p>Every ingredient listed and explained. No hidden chemicals</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Fair Trade</h3>
+                        <p>Direct partnerships with organic farmers across Europe and Africa</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-banner">
+                <h2>Ready to try natural skincare?</h2>
+                <p>Start with our bestselling Rosehip Glow Serum</p>
+                <a href="products.html" class="btn btn-primary" id="about-shop-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 Terra Botanics. This is a demo site for analytics practice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">Added to cart!</div>
+    <script src="script.js"></script>
+</body>
+</html>

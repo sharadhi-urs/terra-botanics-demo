@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Terra Botanics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Terra Botanics</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon" id="cart-link">
+                    🛒 <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you</p>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form-wrap">
+                    <h2>Send us a message</h2>
+                    <form id="contact-form" onsubmit="submitContact(event)">
+                        <div class="form-group">
+                            <label for="contact-name">Name</label>
+                            <input type="text" id="contact-name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <select id="contact-subject">
+                                <option value="general">General Inquiry</option>
+                                <option value="order">Order Question</option>
+                                <option value="returns">Returns & Refunds</option>
+                                <option value="wholesale">Wholesale</option>
+                                <option value="press">Press & Media</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" rows="5" required placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="contact-submit">Send Message</button>
+                    </form>
+                    <div class="form-success" id="contact-success" style="display:none;">
+                        <div class="success-icon">✓</div>
+                        <h3>Message Sent!</h3>
+                        <p>We'll get back to you within 24 hours.</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="info-card">
+                        <h3>📍 Visit Us</h3>
+                        <p>Schanzenviertel 42<br>20357 Hamburg, Germany</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📧 Email</h3>
+                        <p>hello@terrabotanics.de</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📞 Phone</h3>
+                        <p>+49 40 123 4567<br>Mon–Fri, 9am–6pm CET</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>💬 Social</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" id="contact-instagram">Instagram</a>
+                            <a href="#" class="social-link" id="contact-facebook">Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 Terra Botanics. This is a demo site for analytics practice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">Added to cart!</div>
+    <script src="script.js"></script>
+    <script>
+        function submitContact(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').style.display = 'none';
+            document.getElementById('contact-success').style.display = '';
+        }
+    </script>
+</body>
+</html>

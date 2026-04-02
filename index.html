@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Botanics — Natural Skincare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Terra Botanics</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="cart.html" class="cart-icon" id="cart-link">
+                    🛒 <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tag">Rooted in Nature</p>
+            <h1>Pure Skincare,<br>Honest Ingredients</h1>
+            <p class="hero-desc">Handcrafted botanical skincare made with sustainably sourced ingredients. No synthetics, no compromises.</p>
+            <div class="hero-buttons">
+                <a href="products.html" class="btn btn-primary" id="hero-shop-btn">Shop Now</a>
+                <a href="about.html" class="btn btn-secondary" id="hero-learn-btn">Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Bestsellers</h2>
+            <p class="section-subtitle">Our most loved products</p>
+            <div class="product-grid">
+                <div class="product-card" data-product-id="1" data-product-name="Rosehip Glow Serum" data-price="34.99">
+                    <div class="product-image" style="background-color: #e8d5c4;">
+                        <span class="product-badge">Bestseller</span>
+                        <div class="product-emoji">🌹</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rosehip Glow Serum</h3>
+                        <p class="product-desc">Vitamin C & rosehip oil for radiant skin</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€34.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('1', 'Rosehip Glow Serum', 34.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="2" data-product-name="Lavender Night Cream" data-price="29.99">
+                    <div class="product-image" style="background-color: #d5cfe8;">
+                        <span class="product-badge">New</span>
+                        <div class="product-emoji">💜</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Lavender Night Cream</h3>
+                        <p class="product-desc">Deep repair while you sleep</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€29.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('2', 'Lavender Night Cream', 29.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="3" data-product-name="Chamomile Cleanser" data-price="24.99">
+                    <div class="product-image" style="background-color: #e8e4c4;">
+                        <div class="product-emoji">🌼</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Chamomile Cleanser</h3>
+                        <p class="product-desc">Gentle daily cleansing for all skin types</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€24.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('3', 'Chamomile Cleanser', 24.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product-id="4" data-product-name="Aloe Hydra Mist" data-price="19.99">
+                    <div class="product-image" style="background-color: #c4e8d5;">
+                        <div class="product-emoji">🌿</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Aloe Hydra Mist</h3>
+                        <p class="product-desc">Instant hydration on the go</p>
+                        <div class="product-bottom">
+                            <span class="product-price">€19.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('4', 'Aloe Hydra Mist', 19.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="products.html" class="btn btn-primary" id="view-all-btn">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join the Terra Family</h2>
+            <p>Get 10% off your first order + exclusive skincare tips</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Your email address" required id="newsletter-email">
+                <button type="submit" class="btn btn-primary" id="newsletter-submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Terra Botanics</h4>
+                    <p>Natural skincare rooted in science and sustainability.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" id="social-instagram">Instagram</a>
+                        <a href="#" class="social-link" id="social-facebook">Facebook</a>
+                        <a href="#" class="social-link" id="social-tiktok">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Terra Botanics. This is a demo site for analytics practice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">Added to cart!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
