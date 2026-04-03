@@ -14,6 +14,13 @@ function addToCart(id, name, price) {
     }
     localStorage.setItem('terra_cart', JSON.stringify(cart));
     updateCartCount();
+    dataLayer.push({
+        'event': 'add_to_cart',
+        'product_id': id,
+        'product_name': name,
+        'product_price': price,
+        'product_category': category
+    });
     showToast('Added to cart!');
 }
 
