@@ -116,6 +116,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>
         function submitContact(e) {
             e.preventDefault();
+            dataLayer.push({'event': 'contact_form_submit'});
             document.getElementById('contact-form').style.display = 'none';
             document.getElementById('contact-success').style.display = '';
         }
