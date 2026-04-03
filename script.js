@@ -18,8 +18,7 @@ function addToCart(id, name, price) {
         'event': 'add_to_cart',
         'product_id': id,
         'product_name': name,
-        'product_price': price,
-        'product_category': category
+        'product_price': price
     });
     showToast('Added to cart!');
 }
