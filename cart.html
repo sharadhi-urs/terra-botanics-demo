@@ -204,9 +204,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             document.getElementById('checkout-modal').classList.remove('active');
             const orderNum = 'TB-' + Math.floor(Math.random() * 90000 + 10000);
             document.getElementById('order-number').textContent = orderNum;
+            
+            const cart = JSON.parse(localStorage.getItem('terra_cart') || '[]');
+            const totalValue = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            
             dataLayer.push({
         'event': 'purchase',
-        'order_id': orderNum
+        'order_id': orderNum,
+        'value': totalValue,
+        'currency': 'EUR'
     });
             document.getElementById('confirmation-modal').classList.add('active');
             localStorage.removeItem('terra_cart');
