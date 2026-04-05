@@ -192,6 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         function beginCheckout() {
+            dataLayer.push({'event': 'begin_checkout'});
             document.getElementById('checkout-modal').classList.add('active');
         }
 
